@@ -19,3 +19,6 @@ def create_user(name, age, address):
 
 
 many_user = list(map(create_user, name, age, address))
+print(many_user)
+
+my_dict = {}
