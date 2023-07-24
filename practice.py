@@ -1,24 +1,18 @@
-# 실습 번호.py
-number_of_people = 0
-def increase_user(name):
-    number_of_people +=1
-    print(f'{name}님 환영합니다!')
-     
+## 주피터'y' 다시 코드모드로 변경
+## 'm' 쉘 하나가 마크다운 모드로 변경
+## 'a' 커서 기준 위에 쉘 하나 추가
+## 'b' 커서 기준 아래 쉘 하나 추가
+## 'dd' 쉘 삭제
+## shift + enter : 실행 후 커서를 아래로 이동
+## ctrl + enter  : 실행 후 커서를 제자리에
 
-name = ['김시습', '허균', '남영로', '임제', '박지원']
-age = [20, 16, 52, 36, 60]
-address = ['서울', '강릉', '조선', '나주', '한성부']
+API_Key = '4e52d6f6bf95b01a68aa10206929ee02'
 
+lat = 37.56
+lon = 126.97
+url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_Key}'
 
-def create_user(name, age, address):
-    user_info = {}
-    user_info["name"] = name
-    user_info["age"] = age
-    user_info["address"] = address
-    return user_info
-
-
-many_user = list(map(create_user, name, age, address))
-print(many_user)
-
-my_dict = {}
+import requests
+# API 요청 보내기
+response = requests.get(url).json()
+print(response)
