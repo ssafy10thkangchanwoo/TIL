@@ -1,28 +1,24 @@
-# import requests
-# url = "https://random-data-api.com/api/v2/users"
-# response = requests.get(url).json()
+T = 10
+ 
+for tc in range(1, T+1):
+    N = int(input())
+    box = list(map(int, input().split()))
+ 
+ 
+    def BubbleSort(a, N):
+        for i in range(N-1, 0, -1):
+            for j in range(0, i):
+                if a[j] > a[j+1]:
+                    a[j], a[j+1] = a[j+1],a[j]  
+        return a
+    
+          
+    for _ in range(N):
+            sorted_box = BubbleSort(box, 100)
+            sorted_box[0] += 1
+            sorted_box[-1] -= 1
+         
+    sorted_box = BubbleSort(box, 100)
+         
+    print(f'#{tc} {sorted_box[-1] - sorted_box[0]}')
 
-# print(response)
-
-num = 10
-def myfunc():
-    global num
-    num = 20 
-    print("함수 실행: num을 20으로 바꿨다.")
-    print(num)
-myfunc()
-
-print(num)
-
-# filter(fucntion, iterable)
-# 리스트의 홀수만을 걸러내는 함수
-# function의 결과는 True of False 라는 점.
-# 결과가 True인 것만 골라서 반환
-
-def odd(n):
-    return n % 2 
-
-numbers = [1, 2, 3, 4, 5]
-# new_numbers = list(filter(odd,numbers))
-new_numbers = list(filter(lambda n: n % 2, numbers))
-print(new_numbers)
