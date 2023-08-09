@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 num = 456789
 c = [0]*12
 
@@ -14,3 +15,10 @@ while i < 10:
         continue
 
         if c[i] >= 1 and
+=======
+
+N = list(map(int,input().split()))
+print(N)
+
+for i in N:
+>>>>>>> 37ef2781ac93fc4c8a3d54bc9baab969b1d19087
