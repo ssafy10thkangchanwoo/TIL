@@ -1,6 +1,11 @@
 
 def patrol(now, e_sum):
     global min_v
+ 
+    # 가지치기 # 있으면 좀 더 빨라짐
+    if e_sum > min_v:
+        return 
+    
     # 종료조건
     # 모든 방을 다 방문했으면 시작지점으로 돌아가는 양까지 계산
     # 최소값 구하기

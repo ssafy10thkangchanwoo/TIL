@@ -1,4 +1,4 @@
-def f(i, N):
+def f(i, N): # i 현재상태, N 목표
     if i == N:
         print(B)
         return

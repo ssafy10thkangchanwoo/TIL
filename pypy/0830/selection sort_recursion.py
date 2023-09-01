@@ -1,9 +1,22 @@
 def selection_sort(i, lst): # i번째 자리에 i번째로 작은 원소를 놓겠다.
     # 종료조건
-    if i == 5:
+    if i == len(lst):
         return
 
     # 해야할 일 : 제일 작은값 찾아서 i번째 인덱스에 놓기 (자리교환)
+
+    min_i = i # 제일 작은값 인덱스
+    for j in range(i+1, len(lst)):
+        if lst[min_i] > lst[j]:
+            # 내가 알고있던 최소값보다 j번째 위치의 원소가 작다.
+            min_i = j 
+    
+    # 자리바꾸기
+    lst[i], list[min_i] = list[min_i],lst[i]
+
+    # 재귀호출
+    selection_sort(i+1, lst)
+
 
     min_idx = i
     for n in range(i+1, len(lst)):

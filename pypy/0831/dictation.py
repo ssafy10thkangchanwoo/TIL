@@ -8,12 +8,11 @@ count = 0
 def comb(idx, r, selected):
     global count
     if idx == N:
-        k = sum(selected)
-        print(k)
-        # subset = [list[i] for i in selected] # subset은 이쪽 selected에 들어있는 원소들의 리스트이다.
-        # if sum(subset) == 0: # 섭셋값들이 0이면
-        #     count += 1 #카운트를 증가시킨다.
-        #     print(subset)
+        # k = sum(selected)
+        subset = [list[i] for i in selected] # subset은 이쪽 selected에 들어있는 원소들의 리스트이다.
+        if sum(subset) == 0: # 섭셋값들이 0이면
+            count += 1 #카운트를 증가시킨다.
+            print(subset)
         # if r == R: # 이러면 3개짜리만 보는거
         
         return

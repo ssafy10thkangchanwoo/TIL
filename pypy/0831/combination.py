@@ -16,7 +16,7 @@ def comb(idx, r, selected):
     # 내가 idx번째에 있는 숫자를 골랐다.
     selected.append(idx)
     comb(idx + 1, r + 1, selected)
-    # 내가 idx번째에 있는 숫자는 안골랐다.
+    # 내가 idx번째에 있는 숫자는 안골랐다..
     selected.pop()
     comb(idx+1, r, selected)
 
