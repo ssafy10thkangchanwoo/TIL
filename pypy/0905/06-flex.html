@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        height: 900px;
+        border: 2px solid black;
+        display:flex;
+        flex-direction : row;
+
+        flex-wrap:wrap;
+        /* 주축정렬 */
+        /* justify-content: center;
+        /* 교차정렬 */
+        /* align-content: center; */
+        align-items: center;
+    }
+    .post { 
+        background-color : gray;
+        border: 2px solid black;
+        margin:0.5rem; 
+        padding: 0.5rem;
+    }
+    .item1 {
+        /* 부모가 아니라 자기 자신 정렬 */
+        align-self: center;
+    }
+</style>
+<body>
+    <div class = "container">
+        <div class="post item1">
+            <h2>Post Title1</h2>
+            <p>Post content1</p>
+        </div>
+    <div class = "container">
+        <div class="post item2">
+            <h2>Post Title2</h2>
+            <p>Post content2</p>
+        </div>
+    <div class = "container">
+        <div class="post item3">
+            <h2>Post Title3</h2>
+            <p>Post conten3</p>
+        </div>
+    <div class="post item4">
+        <h2>Post Title4</h2>
+            <p>Post conten4</p>
+            </div>
+        </div>
+</body>
+</html>
