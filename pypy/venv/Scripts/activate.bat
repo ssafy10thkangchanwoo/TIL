@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\SSAFY\Desktop\1학기\TIL\pypy\venv
+set VIRTUAL_ENV=C:\Users\SSAFY\Desktop\강찬우\TIL\pypy\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
