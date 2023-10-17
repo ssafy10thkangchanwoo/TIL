@@ -1,0 +1,28 @@
+[
+{
+    "model": "articles.article",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "title": "고구마",
+        "content": "맛당",
+        "created_at": "2023-10-17T00:21:51.662Z",
+        "updated_at": "2023-10-17T00:21:51.662Z",
+        "like_users": [
+            1
+        ]
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "title": "제",
+        "content": "곧내",
+        "created_at": "2023-10-17T00:22:34.129Z",
+        "updated_at": "2023-10-17T00:22:34.129Z",
+        "like_users": []
+    }
+}
+]

@@ -1,0 +1,36 @@
+<body>
+    <h1>{{ _____ }} 님의 프로필</h1>
+
+    <div>
+        팔로잉: {{ _____ }} / 팔로워 : {{ _____ }}
+    </div>
+    <div>
+    {% if _____ %}
+        <div>
+            <form action="{% url "accounts:follow" _____ %}" method="POST">follow</form>
+            {% csrf_token %}
+            {% if _____ %}
+            <input type="submit" value ="_____">
+            {% else %}
+            <input type="submit" value ="_____">
+            {% endif %}
+        </div>
+    </div>
+    <hr> 
+    <h2> {{ _____ }} 님이 작성한 게시글</h2>
+    {% for _____ in _____ %}
+        <p> {{ article.title }} </p>
+    {% endfor %}
+    <hr> 
+    <h2> {{ _____ }} 님이 작성한 댓글</h2>
+    {% for _____ in _____ %}
+        <p>{{ comment.content }}</p>
+    {% endfor %}
+
+    <hr> 
+    <h2> {{ _____ }} 님이 좋아요를 누른 게시글</h2>
+    {% for _____ in _____ %}
+        <p>{{ article.title }}</p>
+    {% endfor %}
+</body>
+</html>
