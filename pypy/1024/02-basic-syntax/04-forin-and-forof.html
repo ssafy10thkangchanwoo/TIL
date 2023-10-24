@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 객체의 속성 반복 for in 
+    // const fruits =  {
+    //   a : 'apple' ,
+    //   b : 'banana'
+    // }
+    // for (const property in fruits) {
+    //   console.log(property)
+    //   console.log(fruits[property])
+    // }
+
+    // // 반복 가능한 객체에 대한 반복 for of 
+    // const numbers = [0, 1, 2, 3]
+    // for (const number of numbers) {
+    //   console.log(number)
+    // }
+
+    // objects(object, array) 키: 값, 인덱스: 정수 // 값이 있다.
+
+    const numbers2 = ['a', 'b', 'c', 'd']
+    for (const number in numbers2) {
+      console.log(number)
+    }
+    // 잘 되는데 이렇게 쓰면 안된다...라?
+    // for in :  열거 가능한 모든 속성을 반환(순서보장x), object에 쓴다. 
+    // for of : 반복가능한 객체 반환 (순서o)
+    // 객체는 for of를 돌리지 못하는 것이 많다.
+
+
+    // for문은 재할당 const를 사용하면 에러 발생
+    // for in, for of 재할당이 아니라 매 반복마다 다른 속성 이름이 변수에 지정된 것
+
+    // NaN 반환하는 경우: 숫자가 아니다
+
+  </script>
+</body>
+
+</html>
