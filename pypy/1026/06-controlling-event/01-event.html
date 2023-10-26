@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">버튼</button>
+
+  <script>
+    // 1. 버튼 선택
+    const btn = document.querySelector('#btn')
+
+    // 4. 콜백함수 작성, 커지면 나중에 이게 더 좋음 
+    // 콜백함수는 Event 객체를 유일한 매개변수로 받음
+    // 반환값 없음 행동만 함 
+    const clickCallback = function (event) {      console.log(event)
+      console.log(event.target)
+      console.log(event.currentTarget)
+      console.log(this)
+    }
+
+
+    // 2. 이벤트 핸들러 부착
+    btn.addEventListener('click', function(event) {
+      console.log(event)
+      console.log(event.target)
+      console.log(event.currentTarget)
+      console.log(this)
+    })
+    // 3. this에 관해
+    
+    // addEventListener는 붙인거에
+    // 화살표는 안쓰는게 좋음
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const myObj4 = {
+        numbers: [1, 2, 3],
+        myFunc: () => {
+         
+            console.log(this) // myObj3
+          }}
+    myObj4.myFunc()
+// 이 this는 window, 화살표 함수가 가르키는 this는 나를 호출한 함수의 상위 객체 
+
+
+    const myObj5 = {
+        numbers: [1, 2, 3],
+        myFunc: function() {
+            console.log(this) // myObj3
+          }}
+        
+      
+    myObj5.myFunc()
+    </script>
+</body>
+</html>
