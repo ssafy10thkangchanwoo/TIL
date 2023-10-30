@@ -9,10 +9,17 @@
 
 <body>
   <script>
+    // 비동기: 바로 처리하진 않겠다. 병렬적 수행
     const slowRequest = function (callBack) {
-    }
-
+      console.log('1. 오래 걸리는 작업 시작...')
+      // myCallBack()
+      setTimeout(function (){
+        callBack()}, 3000)
+      }
+      // 3초뒤에 실행된다가 아니라 3초 뒤에 task que에 들어간다는 것..
+      
     const myCallBack = function () {
+      console.log('2. 콜백함수 실행 됨')
     }
 
     slowRequest(myCallBack)

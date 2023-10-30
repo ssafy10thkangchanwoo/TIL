@@ -9,6 +9,14 @@
 
 <body>
   <script>
+    //비동기 처리시 순서 예상 힘듬.
+     // 3초뒤에 실행된다가 아니라 3초 뒤에 task que에 들어간다는 것..
+
+    // 비동기콜백
+    // 비동기콜백에 순서를 넣는다. 콜백함수에 콜백을 호출, 비동기작업 후에 작업
+    
+
+
     const asyncTask = function (callBack) {
       setTimeout(function () {
         console.log('비동기 작업 완료')

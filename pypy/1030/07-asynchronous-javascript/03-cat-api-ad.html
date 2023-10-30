@@ -7,12 +7,55 @@
   <title>Document</title>
 </head>
 
+
 <body>
   <button>냥냥펀치</button>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+
+  </script>
 
   <script>
-    const URL = 'https://api.thecatapi.com/v1/images/search/'
+
+  const URL = 'https://api.thecatapi.com/v1/images/search'
+
+const btn = document.querySelector('button')
+
+const getCats = function() { axios({
+    method: 'get',
+    url : URL
+  })
+
+  .then((response) => {
+    //<변경>응답으로 필요한 img url만 구하기
+    const imgTag=document.createElement('img')
+    return imgUrl
+  })
+  //<기존>
+  // 응답받은 결과에서 url을 찾고
+  // img 태그 만들고
+  // img속성을 채우고
+  // body에 img 속성을 추가한다.
+
+  //<수정> 앞쪽의 then이 성공한 인자를 매개변수로 받음.
+  .then((response) => {
+    const imgUrl = response.data[0].url 
+    imgTag.setAttribute('src',imgUrl)
+    document.body.appendChild(imgTag)
+  })
+
+
+
+
+  //위쪽에서 잘 안됐을 때
+  .catch((error) => {
+    console.log(error)
+  })
+}
+
+btn.addEventListener('click', getCats) 
+
+  console.log('야옹야옹')
   </script>
-</body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
