@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- Inline Handlers -->
+    <button v-on:click="count++">Add 1</button>
+    <p>Count: {{ count }}</p>
+
+    <!-- Method Handlers -->
+    <button @click="myFunc">Hello</button>
+
+    <!-- Calling Methods in Inline Handlers -->
+    <button @click="greeting('hello')">Say hello</button>
+    <button @click="greeting('bye')">Say bye</button>
+
+    <!-- Accessing Event Argument in Inline Handlers -->
+    <!-- 자동적으로 첫번째 인자로 event를 받는 것이 아닌 방법으로 event를 받는 법  -->
+    <button @click="warning('경고입니다', $event)">Submit</button>
+
+    <!-- event modifiers -->
+    <form @submit.prevent="onSubmit">
+      <input type="submit">
+    </form>
+    <!-- stop 이벤트의 전파(bubbling)를 막는다, stop,prevent 둘 다 쓰기 -->
+    <a @click.stop.prevent="onLink">Link</a>
+
+    <!-- key modifiers , 문법이 조금 다름
+    키에 따른 수식어 따로 제공-->
+    <input type="text" @keyup.enter="onSubmit">
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref } = Vue
+
+    const app = createApp({
+      setup() { 
+        const count = ref(0)
+        const name = ref('Alice')
+        const myFunc = function (event) {
+          console.log(event)
+          console.log(event.currentTarget)
+          console.log(`hello, ${name.value}`)
+        }
+        const greeting = function(message) {
+          console.log(message)
+          }
+        const warning = function (message, event) {
+          console.log(message)
+          console.log(event)
+        }
+        const onSubmit = function(event) {
+          console.log(event)
+        }
+        return {
+          count,
+          name,
+          myFunc,
+          greeting,
+          warning,
+          onSubmit
+        }
+    }
+    })
+
+    app.mount('#app')
+  </script>
+</body>
+
+</html>

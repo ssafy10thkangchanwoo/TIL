@@ -1,0 +1,53 @@
+
+  <div>
+    <div>
+      팔로잉 : <span id="followings-count">{{ person.followings.all|length }}</span> / 
+      팔로워 : <span id="followers-count">{{ person.followers.all|length }}</span>
+    </div>
+    {% if request.user != person and request.user.is_authenticated %}
+      <div>
+        <form id="follow-form" data-user-id="{{ person.pk }}">
+          {% csrf_token %}
+          {% if request.user in person.followers.all %}
+            <input type="submit" value="Unfollow">
+          {% else %}
+            <input type="submit" value="Follow">
+          {% endif %}
+        </form>
+      </div>
+    {% endif %}
+  </div>
+
+
+  <a href="{% url "articles:index" %}">[back]</a>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+const formTag = document.querySelector('#follow-form') 
+formTag.addEventListener('submit', function(event) {
+  event.preventDefault()
+  const userId = formTag.dataset.userId
+  axios({
+    url: `/accounts/${userId}/follow/`,
+    method : 'post', 
+    headers: {'X-CSRFToken': csrftoken},
+  })
+  .then((response) => {
+    const isFollowed = response.data.is_followed 
+    const followBtn = document.querySelector('#follow-form > input[type=submit]:nth-child(2)')
+    if (isFollowed === true) {
+      followBtn.value == 'unfollow'
+    } else {
+      followBtn.value = 'follow'
+    }
+
+    const followingCountTag = document.querySelector('#followings-count')
+    const followersCountTag = document.querySelector('#followers-count') 
+
+    followingsCountTag.textContent=response.data.followings_count
+    followersCountTag.textContent = response.data.followers_count 
+  })
+})
+  </script>
+</body>
+</html>

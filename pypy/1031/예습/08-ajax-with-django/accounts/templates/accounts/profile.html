@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>{{ person.username }}님의 프로필</h1>
+
+  <div>
+    <div>
+      팔로잉 : {{ person.followings.all|length }} / 팔로워 : {{ person.followers.all|length }}
+    </div>
+    {% if request.user != person and request.user.is_authenticated %}
+      <div>
+        <form action="{% url "accounts:follow" person.pk %}" method="POST" id ='follow-form' data-user-id="{{ person.pk }}">
+          {% csrf_token %}
+          {% if request.user in person.followers.all %}
+            <input type="submit" value="Unfollow">
+          {% else %}
+            <input type="submit" value="Follow">
+          {% endif %}
+        </form>
+      </div>
+    {% endif %}
+  </div>
+
+  <hr>
+
+  <h2>작성한 게시글</h2>
+  {% for article in person.article_set.all %}
+    <p>{{ article.title }}</p>
+  {% endfor %}
+
+  <hr>
+
+  <h2>작성한 댓글</h2>
+  {% for comment in person.comment_set.all %}
+    <p>{{ comment.content }}</p>
+  {% endfor %}
+
+  <hr>
+
+  <h2>좋아요를 누른 게시글</h2>
+  {% for article in person.like_articles.all %}
+    <p>{{ article.title }}</p>
+  {% endfor %}
+
+  <hr>
+
+  <a href="{% url "articles:index" %}">[back]</a>
+  <script>
+    const formTag = document.querySelector('#follow-form')
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value
+
+    formTag.addEventListener('submit',function(event) {
+      event.preventDefault(
+        axios ({
+          const userId = formTag.dataset.userId
+          // data - * : 사용자 지정 데이트 특성을 만들어 HTML - DOM 사이에서 데이터를 교환할 수 있는 방법
+          method : 'post',
+          url: `/accounts/${userId}/follow/`
+          headers : {'X-CSRFToken':csrftoken,},
+        })
+        .then((response) => {
+
+        })
+      
+    })
+
+
+
+
+    const formTags = document.querySelectorAll('.like-forms')
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value
+    
+    formTags.forEach((formTag => { 
+      formTag.addEventListener('submit', function(event) {
+        event.preventDefault()
+
+        const articleId = formTag.dataset.articleId
+
+        axios({
+          method : 'post',
+          url: `/articles/${articleId}/likes/`,
+          headers :  {'X-CSRFToken': csrftoken,},
+          mode : 'same-origin',
+        })
+        .then(response) => {
+          const isLiked = response.data.is_liked 
+          const likeBtn = document.querySelector(`#like-${articleId}`)
+          if (isLiked === ture) {
+            likeBtn.value='좋아요 취소'
+          } else {
+            likeBtn.value = '좋아요'
+          }
+        }
+      })
+    }))
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+  </script>
+  <script>
+    const formTags = document.querySelectorAll('.like-forms')
+    const 
+
+
+  </script>
+
+
+  
+</body>
+</html>

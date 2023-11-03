@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id = 'app'>
+    <h1>{{ greeting }}</h1>
+    <button @click="count++">{{ count }}</button>
+    <p>{{ count }}</p>
+  </div>
+
+  <div id = 'app2'>
+    <h1>{{ message }}</h1>
+    <button @click="count++">{{ count }}</button>
+    <p>{{ count }}</p>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    const {createApp, ref} = Vue 
+    console.log(Vue)
+
+    const app = createApp({
+      //객체의 메서드가 들어간다
+      // setup : function() { 
+        // count : count, 
+      // }
+      // 단축메서드 , 단축 
+      setup() {
+        const count = ref(0)
+        const greeting = ref('hello')
+        return {
+          count,
+          greeting
+        }
+      }
+    })
+    app.mount('#app')
+    const app2 = createApp ({
+        setup() {
+            const message = ref("this is app2")
+            return {
+                message
+            }
+        }
+    })
+    app2.mount('#app2')
+  </script>
+</body>
+
+</html>

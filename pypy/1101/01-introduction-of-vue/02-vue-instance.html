@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 템플릿에서는 automatically unwrapped해줌  -->
+    {{ message }}
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref } = Vue 
+    // 앱을 생성하기 위해 createApp을 쓰고 인자로 ({})를 받는다.
+    // setup이라는 메서드는 객체를 리턴한다.
+    const app = createApp({
+      //이하는 vue component
+      setup() {
+        // ref로 래핑하면 반응형으로 됨
+        const message = ref('hello vue!') 
+        console.log(message.value)
+        return {
+          message 
+        }
+      }
+    })
+    app.mount('#app')
+
+  </script>
+</body>
+
+</html>

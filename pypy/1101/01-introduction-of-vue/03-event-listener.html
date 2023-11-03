@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="increment"> {{ count }}</button>
+    <button @click="increment"> {{ count }}</button>
+    <!-- @는 v-on: 의 축약형이다  -->
+
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    const { createApp, ref } = Vue 
+
+    const app = createApp({
+      setup() {
+        const count=ref(0)
+        // ref 객체 자체를 바꾸는 것이 아님 
+        // 객체 안의 뭔가를 바꾼 것
+        const increment = function () {
+          // 재할당 아님 
+          count.value++
+        }
+        return {
+          count,
+          increment
+        }
+      }
+    })
+    app.mount('#app')
+  </script>
+</body>
+
+</html>
+
+
+<!-- ref 가 최상위 속성일 때만 자동언랩가능 -->
