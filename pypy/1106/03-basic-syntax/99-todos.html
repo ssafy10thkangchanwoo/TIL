@@ -9,10 +9,16 @@
 
 <body>
   <div id="app">
-    <a v-bind:href="myUrl" :[name]="text">Move to url</a>
+    <form>
+      <input>
+      <button>Add Todo</button>
+    </form>
 
-    <input type="text" v-model="name">
-    <input type="text" v-model="text">
+    <ul>
+      <li>
+        <button>X</button>
+      </li>
+    </ul>
   </div>
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -21,15 +27,18 @@
 
     const app = createApp({
       setup() {
-        const imageSrc = ref('https://picsum.photos/200/')
-        const myUrl = ref('https://www.google.co.kr/')
-        const text = ref("")
-        const name = ref("")
+        let id = 0
+
+        const newTodo = ref(null)
+        const todos = ref([
+          { id: id++, text: 'Learn HTML' },
+          { id: id++, text: 'Learn JS' },
+          { id: id++, text: 'Learn Vue' }
+        ])
+
         return {
-          imageSrc,
-          myUrl,
-          text,
-          name
+          newTodo,
+          todos,
         }
       }
     })

@@ -9,10 +9,19 @@
 
 <body>
   <div id="app">
-    <a v-bind:href="myUrl" :[name]="text">Move to url</a>
+    <!-- 1. computed -->
+    <ul>
+      <li>
+      </li>
+    </ul>
 
-    <input type="text" v-model="name">
-    <input type="text" v-model="text">
+    <hr>
+
+    <!-- 2. method (computed가 불가능한 중첩된 v-for) -->
+    <ul>
+      <li>
+      </li>
+    </ul>
   </div>
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -21,15 +30,14 @@
 
     const app = createApp({
       setup() {
-        const imageSrc = ref('https://picsum.photos/200/')
-        const myUrl = ref('https://www.google.co.kr/')
-        const text = ref("")
-        const name = ref("")
+        const numbers = ref([1, 2, 3, 4, 5])
+        const numberSets = ref([
+          [1, 2, 3, 4, 5],
+          [6, 7, 8, 9, 10],
+        ])
+
         return {
-          imageSrc,
-          myUrl,
-          text,
-          name
+          numberSets,
         }
       }
     })

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>남은 할 일</h2>
+    <p> {{ restOfTodos }}</p>
+    <p>{{ getRestOfTodos }}</p>
+    <button @click= 'computedFUnction'> computed </button>
+    <button @click= 'methodFunction'> method </button>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref, computed } = Vue
+
+    const app = createApp({
+      setup() {
+        const todos = ref([
+          { text: 'Vue 실습' },
+          { text: '자격증 공부' },
+          { text: 'TIL 작성' }
+        ])
+        // 값 자동업뎃
+        // computed속성은 의존된 반응형 데이터를 기반으로 캐시된다.
+        // 동일한 의존성을 가진 여러곳에서 사용할 때 유용
+        const restOfTodos = computed(() => {
+          return todos.value.length > 0 ? '아직 남았다' : '퇴근!'
+        })
+
+        const getRestOfTodos = function() {
+          return todos.value.length > 0 ? '아직 남았다' : '퇴근!'
+        }
+
+        return {
+          todos,
+        }
+      }
+    })
+
+    app.mount('#app')
+  </script>
+</body>
+
+</html>

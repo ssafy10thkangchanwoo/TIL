@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = 'app'>
+    <h1> Todo: 오늘의 할일 </h1>
+    <input type="text" v-model="input"><button @click="addTodo">add</button>
+        <ul>
+            
+        </ul>
+</div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp, ref, computed } = Vue 
+        const app = createApp({
+            setup() {
+                const todos=ref([])
+                const input = ref('')
+                const addTodo = function() {
+                    todos.value.push({"text" : input.value})
+                    console.log(todos.value)
+                }
+                return {
+                    todos,
+                    input
+
+                }
+            }
+        })
+
+        app.mount("#app")
+    </script>
+</body>
+</html>
